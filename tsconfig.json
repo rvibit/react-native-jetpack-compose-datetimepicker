@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-material-datetimepicker": ["./src/index"]
+      "react-native-jetpack-compose-datetimepicker": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

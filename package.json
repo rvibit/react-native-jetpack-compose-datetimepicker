@@ -1,7 +1,7 @@
 {
-  "name": "react-native-material-datetimepicker",
+  "name": "react-native-jetpack-compose-datetimepicker",
   "version": "0.1.0",
-  "description": "A DateTimepicker and Date Rage Picker library for React native build with material3",
+  "description": "A DateTimepicker library for React native build with jetpack compose,material3 and RN Fabric Component(New Architecture)",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -32,7 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-material-datetimepicker-example",
+    "example": "yarn workspace react-native-jetpack-compose-datetimepicker-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -47,14 +47,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rvibit/react-native-material-datetimepicker.git"
+    "url": "git+https://github.com/rvibit/react-native-jetpack-compose-datetimepicker.git"
   },
   "author": "ravi singh <singh.ravi488@gmail.com> (https://github.com/rvibit)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rvibit/react-native-material-datetimepicker/issues"
+    "url": "https://github.com/rvibit/react-native-jetpack-compose-datetimepicker/issues"
   },
-  "homepage": "https://github.com/rvibit/react-native-material-datetimepicker#readme",
+  "homepage": "https://github.com/rvibit/react-native-jetpack-compose-datetimepicker#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
