@@ -175,9 +175,12 @@
     ]
   },
   "codegenConfig": {
-    "name": "RNMaterialDatetimepickerViewSpec",
-    "type": "components",
-    "jsSrcsDir": "src"
+    "name": "MaterialDatetimepickerView",
+    "type": "all",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.materialdatetimepicker"
+    }
   },
   "create-react-native-library": {
     "type": "view-new",
