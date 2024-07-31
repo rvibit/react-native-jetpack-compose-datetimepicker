@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import MaterialDatetimepickerView from './MaterialDatetimepickerViewNativeComponent';
 import type { NativeSyntheticEvent } from 'react-native';
 import type { Double } from 'react-native/Libraries/Types/CodegenTypes';
@@ -21,8 +21,6 @@ type PickerEvent = NativeSyntheticEvent<
 
 export function MaterialDatetimepicker(props: DatePickerPorps) {
   const date = props.defaultDate?.getTime() ?? new Date().getTime();
-  //   const displayMode = props.displayMode ?? 'picker';
-  //   const pickerType = props.pickerType ?? 'date';
   const onConfirm = useCallback(
     (e: PickerEvent) => {
       const selectedDate = new Date(e.nativeEvent.date);
@@ -35,8 +33,6 @@ export function MaterialDatetimepicker(props: DatePickerPorps) {
       {...props}
       defaultDate={date}
       onConfirm={onConfirm}
-      //   displayMode={displayMode}
-      //   pickerType={pickerType}
     />
   );
 }
