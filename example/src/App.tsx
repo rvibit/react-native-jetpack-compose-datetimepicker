@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
-import { MaterialDatetimepicker } from 'react-native-material-datetimepicker';
+import { MaterialDatetimepicker } from 'react-native-jetpack-compose-datetimepicker';
 
 export default function App() {
   const [pickerState, setPickerState] = useState({
