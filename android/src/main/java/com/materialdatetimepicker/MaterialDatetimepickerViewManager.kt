@@ -1,6 +1,8 @@
 package com.materialdatetimepicker
 
 import android.graphics.Color
+import android.util.Log
+import com.facebook.react.common.MapBuilder
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
@@ -8,6 +10,7 @@ import com.facebook.react.uimanager.ViewManagerDelegate
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.viewmanagers.MaterialDatetimepickerViewManagerInterface
 import com.facebook.react.viewmanagers.MaterialDatetimepickerViewManagerDelegate
+import com.materialdatetimepicker.events.OnConfirmEvent
 
 @ReactModule(name = MaterialDatetimepickerViewManager.NAME)
 class MaterialDatetimepickerViewManager : SimpleViewManager<MaterialDatetimepickerView>(),
@@ -30,12 +33,38 @@ class MaterialDatetimepickerViewManager : SimpleViewManager<MaterialDatetimepick
     return MaterialDatetimepickerView(context)
   }
 
-  @ReactProp(name = "color")
-  override fun setColor(view: MaterialDatetimepickerView?, color: String?) {
-    view?.setBackgroundColor(Color.parseColor(color))
-  }
-
   companion object {
     const val NAME = "MaterialDatetimepickerView"
+  }
+
+
+  override fun setIsVisible(view: MaterialDatetimepickerView?, isVisible: Boolean) {
+    view?.isVisible(isVisible)
+  }
+
+
+  override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> =
+    mutableMapOf(
+      OnConfirmEvent.EVENT_NAME to MapBuilder.of("registrationName", "onConfirm"),
+    )
+
+  override fun setDefaultDate(view: MaterialDatetimepickerView?, value: Double) {
+    view?.setDefaultDate(value)
+  }
+
+  override fun setConfirmText(view: MaterialDatetimepickerView?, value: String?) {
+    view?.setConfirmText(value)
+  }
+
+  override fun setCancelText(view: MaterialDatetimepickerView?, value: String?) {
+    view?.setCancelText(value)
+  }
+
+  override fun setDisplayMode(view: MaterialDatetimepickerView?, value: String?) {
+    view?.setDisplayMode(value)
+  }
+
+  override fun setPickerType(view: MaterialDatetimepickerView?, value: String?) {
+    view?.setPickerType(value)
   }
 }
