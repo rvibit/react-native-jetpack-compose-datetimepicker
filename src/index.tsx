@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import MaterialDatetimepickerView from './MaterialDatetimepickerViewNativeComponent';
 import type { NativeSyntheticEvent } from 'react-native';
 import type { Double } from 'react-native/Libraries/Types/CodegenTypes';
