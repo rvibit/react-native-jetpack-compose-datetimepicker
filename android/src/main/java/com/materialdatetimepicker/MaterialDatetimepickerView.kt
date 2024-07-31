@@ -2,11 +2,9 @@ package com.materialdatetimepicker
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.util.Log
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -23,9 +21,10 @@ import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerHelper
@@ -34,11 +33,7 @@ import com.facebook.react.uimanager.events.EventDispatcher
 import com.materialdatetimepicker.compose.TimePickerDialog
 import com.materialdatetimepicker.events.OnCancelEvent
 import com.materialdatetimepicker.events.OnConfirmEvent
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
-import java.util.Locale
-import java.util.concurrent.TimeUnit
 
 
 @SuppressLint("ViewConstructor")
@@ -60,7 +55,7 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
   @Composable
   fun DatePickerCompose() {
     val datePickerState = rememberDatePickerState(
-      initialSelectedDateMillis = defaultDate.value,
+      initialSelectedDateMillis = defaultDate.longValue,
       initialDisplayMode = defaultDisplayMode.value,
     )
     if (isVisible.value){
@@ -68,6 +63,7 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
         onDismissRequest = { isVisible.value = false },
         confirmButton = {
           TextButton(onClick = {
+            defaultDate.longValue = datePickerState.selectedDateMillis!!
             isVisible.value = false
             sendEvent(OnConfirmEvent(surfaceId ,id,datePickerState.selectedDateMillis))
           }) {
@@ -76,6 +72,7 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
         },
         dismissButton = {
           TextButton(onClick = {
+            datePickerState.selectedDateMillis = defaultDate.longValue
             isVisible.value = false
             sendEvent(OnCancelEvent(surfaceId ,id))
           }) {
@@ -93,10 +90,8 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
   @Composable
   @OptIn(ExperimentalMaterial3Api::class)
   fun TimePickerCompose() {
-
-
     val cal = Calendar.getInstance()
-    cal.timeInMillis = defaultDate.value
+    cal.timeInMillis = defaultDate.longValue
     val state = rememberTimePickerState(
       initialHour = cal.get(Calendar.HOUR_OF_DAY),
       initialMinute = cal.get(Calendar.MINUTE),
@@ -113,6 +108,7 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
         confirmText = confirmText.value,
         cancelText = cancelText.value,
         onCancel = {
+          cal.timeInMillis = defaultDate.longValue
           isVisible.value = false
           sendEvent(OnCancelEvent(surfaceId ,id))
                    },
@@ -120,6 +116,7 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
           cal.set(Calendar.HOUR_OF_DAY, state.hour)
           cal.set(Calendar.MINUTE, state.minute)
           cal.isLenient = false
+          defaultDate.longValue = cal.timeInMillis
           sendEvent(OnConfirmEvent(surfaceId ,id,cal.timeInMillis))
           isVisible.value = false
         },
@@ -132,10 +129,10 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
                 defaultDisplayMode.value = DisplayMode.Input
               }
             }) {
-              val icon = if (isVisible.value) {
-                Icons.Outlined.Edit
+              val icon = if (defaultDisplayMode.value == DisplayMode.Picker) {
+                painterResource(R.drawable.keyboard)
               } else {
-                Icons.Outlined.Edit
+                painterResource(R.drawable.baseline_access_time_24)
               }
               Icon(
                 icon,

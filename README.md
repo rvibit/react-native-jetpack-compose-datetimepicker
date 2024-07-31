@@ -1,6 +1,6 @@
 # react-native-material-datetimepicker
 
-A DateTimepicker and Date Rage Picker library for React native build with material3
+A Native Date and Time Picker library for react native which uses Jetpack Compose Material 3 Date and Time Pickers under the hood.
 
 ## Installation
 
@@ -10,15 +10,21 @@ npm install react-native-material-datetimepicker
 
 ## Usage
 
-
 ```js
-import { MaterialDatetimepickerView } from "react-native-material-datetimepicker";
+import { MaterialDatetimepicker } from 'react-native-material-datetimepicker';
 
 // ...
 
-<MaterialDatetimepickerView color="tomato" />
+<MaterialDatetimepicker
+  defaultDate={pickerState.date}
+  onCancel={() => console.log('cancel')}
+  isVisible={true}
+  onConfirm={(val) => console.log(val)}
+  confirmText="Confirm"
+  displayMode="picker"
+  pickerType="date"
+/>;
 ```
-
 
 ## Contributing
 
