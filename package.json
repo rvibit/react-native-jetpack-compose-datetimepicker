@@ -1,6 +1,6 @@
 {
   "name": "react-native-jetpack-compose-datetimepicker",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A DateTimepicker library for React native build with jetpack compose,material3 and RN Fabric Component(New Architecture)",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
