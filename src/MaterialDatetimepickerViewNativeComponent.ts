@@ -1,5 +1,5 @@
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
-import type { ViewProps } from 'react-native';
+import type { HostComponent, ViewProps } from 'react-native';
 import type {
   DirectEventHandler,
   Double,
@@ -22,4 +22,4 @@ interface NativeProps extends ViewProps {
 
 export default codegenNativeComponent<NativeProps>(
   'MaterialDatetimepickerView'
-);
+) as HostComponent<NativeProps>;

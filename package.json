@@ -3,7 +3,7 @@
   "version": "0.2.2",
   "description": "A DateTimepicker library for React native build with jetpack compose,material3 and RN Fabric Component(New Architecture)",
   "source": "./src/index.tsx",
-  "main": "./lib/commonjs/index.js",
+  "main": "./src/index.tsx",
   "module": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -74,7 +74,7 @@
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-native": "0.74.3",
-    "react-native-builder-bob": "^0.26.0",
+    "react-native-builder-bob": "^0.29.0",
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
@@ -176,11 +176,8 @@
   },
   "codegenConfig": {
     "name": "MaterialDatetimepickerView",
-    "type": "all",
-    "jsSrcsDir": "src",
-    "android": {
-      "javaPackageName": "com.materialdatetimepicker"
-    }
+    "type": "components",
+    "jsSrcsDir": "src"
   },
   "create-react-native-library": {
     "type": "view-new",
