@@ -2,6 +2,10 @@
 
 A Native Date and Time Picker library for react native which uses Jetpack Compose Material3 Date and Time Pickers under the hood. It uses react Native Fabric Component (New Architecture only)
 
+## NOTE
+
+This package uses React Natiev new architecture's Fabric Component so it'll only work if your app has new architechture enabled in **android/gradle.properties** file.
+
 ## Installation
 
 ```sh
