@@ -16,9 +16,9 @@ import { MaterialDatetimepicker } from 'react-native-jetpack-compose-datetimepic
 // ...
 
 <MaterialDatetimepicker
-  defaultDate={pickerState.date}
+  defaultDate={new Date()}
   onCancel={() => console.log('cancel')}
-  isVisible={true}
+  isVisible={true} //true|false -> manage with useState
   onConfirm={(val) => console.log(val)}
   confirmText="Confirm"
   displayMode="picker"
