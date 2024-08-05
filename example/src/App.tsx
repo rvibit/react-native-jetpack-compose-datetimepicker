@@ -52,6 +52,8 @@ export default function App() {
         confirmText="Confirm"
         displayMode="picker"
         pickerType="date"
+        themeVarient="dark"
+        dynamicColors={false}
       />
       <MaterialDatetimepicker
         defaultDate={pickerState.time}

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.DatePicker
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import com.example.compose.AppTheme
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerHelper
@@ -44,6 +46,8 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
   private var defaultDate = mutableLongStateOf(System.currentTimeMillis())
   private var confirmText = mutableStateOf("Ok")
   private var cancelText = mutableStateOf("Cancel")
+  private var isDarkTheme = mutableStateOf("system")
+  private var dynamicColors = mutableStateOf(true)
 
   @OptIn(ExperimentalMaterial3Api::class)
   private var defaultDisplayMode = mutableStateOf(DisplayMode.Picker)
@@ -191,13 +195,29 @@ class MaterialDatetimepickerView(private val context: ThemedReactContext) : Fram
       defaultPickerType.value = value
     }
   }
+  fun setThemeVarient(value: String?) {
+    if (value != null) {
+      isDarkTheme.value = value
+    }else{
+      isDarkTheme.value = "system"
+    }
+  }
+  fun setDynamicColors(value: Boolean) {
+    dynamicColors.value = value
+  }
 
   init {
     composeView.setContent {
-      if (defaultPickerType.value == "date"){
-        DatePickerCompose()
-      }else{
-        TimePickerCompose()
+      val isDarkmode = isDarkTheme.value != "light"
+      AppTheme(
+        darkTheme = if(isDarkTheme.value == "system") isSystemInDarkTheme() else isDarkmode,
+        dynamicColor = dynamicColors.value
+      ) {
+        if (defaultPickerType.value == "date") {
+          DatePickerCompose()
+        } else {
+          TimePickerCompose()
+        }
       }
     }
     addView(composeView)

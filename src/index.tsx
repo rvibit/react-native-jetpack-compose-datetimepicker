@@ -13,6 +13,8 @@ interface DatePickerPorps {
   cancelText?: string;
   displayMode?: 'picker' | 'input';
   pickerType?: 'date' | 'time';
+  themeVarient?: 'light' | 'dark' | 'system';
+  dynamicColors?: boolean;
 }
 type PickerEvent = NativeSyntheticEvent<
   Readonly<{
@@ -34,6 +36,7 @@ export function MaterialDatetimepicker(props: DatePickerPorps) {
       {...props}
       defaultDate={date}
       onConfirm={onConfirm}
+      dynamicColors={props.dynamicColors ?? true}
     />
   );
 }

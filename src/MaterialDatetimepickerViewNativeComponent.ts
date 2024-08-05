@@ -18,6 +18,8 @@ interface NativeProps extends ViewProps {
   cancelText?: string;
   displayMode?: WithDefault<'picker' | 'input', 'picker'>;
   pickerType?: WithDefault<'date' | 'time', 'date'>;
+  themeVarient?: WithDefault<'light' | 'dark' | 'system', 'system'>;
+  dynamicColors?: boolean;
 }
 
 export default codegenNativeComponent<NativeProps>(
