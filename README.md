@@ -23,14 +23,36 @@ import { MaterialDatetimepicker } from 'react-native-jetpack-compose-datetimepic
   defaultDate={new Date()}
   onCancel={() => console.log('cancel')}
   isVisible={true} //true|false -> manage with useState
-  onConfirm={(val) => console.log(val)}
+  onConfirm={(val) => console.log(val)} // val is Date object
   confirmText="Confirm"
-  displayMode="picker"
-  pickerType="date"
+  displayMode="picker" // picker | input
+  pickerType="date" // date | time
+  themeVarient="dark" // light | dark | system    ->(default value is system means it follows system setting)
+  dynamicColors={false} // true | false (default is true)
 />;
 ```
 
+## Features
+
+- Date Picker/ Time Picker
+- Inout Mode and Picker Mode
+- Light and Dark Theme based support
+- Dynamic Theme support based on wallpaper colors (Material You)
+- Props autocompletion (Typescript)
+
 ## Screenshots/Demo
+
+Check example folder for demo code. You can run the demo using this command
+
+```sh
+yarn example
+```
+
+OR
+
+```sh
+npm run example
+```
 
 <img src="https://github.com/user-attachments/assets/8fbd0df7-ad3c-4d6e-9f77-81b9a0271fbb" width="258">
 <img src="https://github.com/user-attachments/assets/d82c0312-7665-4b10-97f4-8b4c6afe6a57" width="258">
